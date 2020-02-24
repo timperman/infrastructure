@@ -1,24 +1,22 @@
 {
-  // Set *default* container specific settings.json values on container create.
-  "settings": { 
-    "terminal.integrated.shell.linux": "/bin/bash"
-  },
+	"name": "Kubernetes & Helm",
+	"dockerFile": "Dockerfile",
 
-  // Add the IDs of extensions you want installed when the container is created.
-  "extensions": [
-    "ms-azuretools.vscode-docker",
-    "ms-kubernetes-tools.vscode-kubernetes-tools"
-  ],
+	"remoteEnv": {
+		"SYNC_LOCALHOST_KUBECONFIG": "true"
+	},
 
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+		"source=${env:HOME}${env:USERPROFILE}/.kube,target=/root/.kube-localhost,type=bind"
+	],
 
-  // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bash .devcontainer/install-dev-tools.sh"
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
 
-  // Uncomment when using a ptrace-based debugger like C++, Go, and Rust.
-  // "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
-
-  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
-  // "remoteUser": "vscode"
+	"extensions": [
+		"ms-azuretools.vscode-docker",
+		"ms-kubernetes-tools.vscode-kubernetes-tools"
+	]
 }
