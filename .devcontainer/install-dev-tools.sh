@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install docker
-curl -fsSL https://get.docker.com | sudo sh -
+# curl -fsSL https://get.docker.com | sudo sh -
 
 # install kubectl
 curl -sSL -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl 
